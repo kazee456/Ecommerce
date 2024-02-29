@@ -91,7 +91,7 @@ cart();
             <tbody>
                 <tr>
                     <td>Apple</td>
-                    <td><img src="./images/pexels-vincent-rivaud-2543270.jpg" alt=""></td>
+                    <td><img src="./images/pexels-vincent-rivaud-2543270.jpg"  alt="" class="logo"></td>
                     <td><input type="text"></td>
                     <td>900</td>
                     <td><input type="checkbox"></td>
@@ -102,6 +102,12 @@ cart();
                 </tr>
             </tbody>
         </table>
+        <!-- subtotal -->
+        <div class="d-flex mb-5">
+            <h4 class="px-4">Subtotal: <strong>500/-</strong></h4>
+            <a href="index.php"><button class="bg-info px-3 py-2 boarder-0 mx-3">Contiue Shopping</button></a>
+            <a href="#"><button class="bg-secondary text-light px-3 py-2 boarder-0">Check Out</button></a>
+        </div>
     </div>
 </div>
 <!-- last child  -->
