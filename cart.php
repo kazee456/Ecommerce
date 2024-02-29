@@ -97,6 +97,7 @@ cart();
                     <td><input type="checkbox"></td>
                     <td>
                         <p>Update</p>
+                        <p>Remove</p>
                     </td>
                 </tr>
             </tbody>
