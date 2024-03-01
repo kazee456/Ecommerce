@@ -126,7 +126,7 @@ cart();
                     <td><input type="text" name="qty"class="form-input w-50"  ></td>
                     <?php
                     $ip = getIPAddress();
-                    if (isset($_POST['update_cart'])) {
+                     if (isset($_POST['update_cart'])) {
                         $quantites = $_POST['qty'];
                         if ($quantites < 1 || $quantites > 50) {
                             $message = "We can only provide quantities of goods between 1 and 50.";
@@ -138,7 +138,7 @@ cart();
                     }
                     
                     if (isset($message)) {
-                        echo "<script>alert('$message');</script>";
+                        echo "<script>alert('Please Input a Value In the Quantity field');</script>";
                     }
 
                     ?>
