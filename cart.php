@@ -85,7 +85,8 @@ cart();
 <!-- fourth-chid-tale -->
 <div class="container">
     <div class="row">
-        <table class="table table-boardered">
+        <form action=""method="post">
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Product Title</th>
@@ -122,11 +123,31 @@ cart();
                     <td><?php echo $product_title?></td>
                     <td><img src="./admin_area/product_images/<?php echo $product_image1?>"
                       alt="" class="cart_img"></td>
-                    <td><input type="text" class="form-input w-50"></td>
+                    <td><input type="text" name="qty"class="form-input w-50"  ></td>
+                    <?php
+                    $ip = getIPAddress();
+                    if (isset($_POST['update_cart'])) {
+                        $quantites = $_POST['qty'];
+                        if ($quantites < 1 || $quantites > 50) {
+                            $message = "We can only provide quantities of goods between 1 and 50.";
+                        } else {
+                            $update_cart = "update `cart_details` set quantity=$quantites where ip_address= '$ip'";
+                            $result_products_quantity = mysqli_query($con, $update_cart);
+                            $total_price = $total_price * $quantites;
+                        }
+                    }
+                    
+                    if (isset($message)) {
+                        echo "<script>alert('$message');</script>";
+                    }
+
+                    ?>
                     <td><?php echo $price_table?>/-</td>
                     <td><input type="checkbox"></td>
                     <td class="d-flex">
-                        <button  class="bg-info px-3 py-2 boarder-0 mx-3">Update</button>
+                        <!-- <button  class="bg-info px-3 py-2 boarder-0 mx-3">Update</button> -->
+                        <input type="submit" value="Update Cart" class="bg-info px-3 py-2 boarder-0 mx-3"
+                        name="update_cart">
                         <button  class="bg-info px-3 py-2 boarder-0 mx-3">Remove</button>
                     </td>
                 </tr>
@@ -144,6 +165,19 @@ cart();
         </div>
     </div>
 </div>
+<script>
+document.querySelector('form').addEventListener('submit', function(event) {
+  const qtyInput = document.querySelector('input[name="qty"]');
+  const qty = parseInt(qtyInput.value);
+
+  if (qty < 1 || qty > 50) {
+    event.preventDefault();
+    alert('We can only provide quantities of goods between 1 and 50.');
+    qtyInput.focus();
+  }
+});
+</script>
+</form>
 <!-- last child  -->
 <!-- include footer  -->
 <?php
