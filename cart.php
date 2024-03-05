@@ -45,15 +45,15 @@ include('functions/common_function.php');
           <a class="nav-link" href="display_all.php">Products<i class="fa fa-product-hunt" aria-hidden="true"></i></a>
          </li>
          <li class="nav-item">
-          <a class="nav-link" href="#">Register<i class="fa fa-registered" aria-hidden="true"></i> </a>
+          <a class="nav-link" href="./users_area/user_registration.php">Register<i class="fa fa-registered" aria-hidden="true"></i> </a>
          </li>
          <li class="nav-item">
           <a class="nav-link" href="#">Contact <i class="fa fa-phone" aria-hidden="true"></i></a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
           <a class="nav-link" href="cart.php">Cart<i class="fa fa-shopping-cart"
           aria-hidden="true"></i><sup><?php cart_item(); ?></sup> </a>
-         </li> 
+         </li>  -->
           </ul>
       </div>
   </div>
@@ -178,7 +178,7 @@ cart();
         echo" <h4 class='px-4'>Subtotal: <strong>$total_price/-</strong></h4>
         <input type='submit' value='Continue Shopping' class='bg-info px-3 py-2 boarder-0 mx-3'
         name='continue_shopping'>
-            <button class='bg-secondary  px-3 py-2 boarder-0'><a href='checkout.php'class='text-light'>Check Out</a> </button>";
+            <button class='bg-secondary  px-3 py-2 boarder-0'><a href='./users_area/checkout.php'class='text-light'>Check Out</a> </button>";
     }else{
         echo"<input type='submit' value='Continue Shopping' class='bg-info px-3 py-2 boarder-0 mx-3'
         name='continue_shopping'>";

@@ -1,5 +1,5 @@
 <?php
-include('includes/connect.php');
+include('../includes/connect.php');
 
 ?>
 <!DOCTYPE html>
@@ -31,13 +31,13 @@ include('includes/connect.php');
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="index.php">Home<i class="fa fa-home" aria-hidden="true"></i> <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="../index.php">Home<i class="fa fa-home" aria-hidden="true"></i> <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="display_all.php">Products<i class="fa fa-product-hunt" aria-hidden="true"></i></a>
+        <a class="nav-link" href="../display_all.php">Products<i class="fa fa-product-hunt" aria-hidden="true"></i></a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="#">Register<i class="fa fa-registered" aria-hidden="true"></i> </a>
+        <a class="nav-link" href="user_registration.php">Register<i class="fa fa-registered" aria-hidden="true"></i> </a>
       </li>
        <li class="nav-item">
         <a class="nav-link" href="#">Contact <i class="fa fa-phone" aria-hidden="true"></i></a>
@@ -80,7 +80,7 @@ include('includes/connect.php');
         <div class="row">
             <?php
             if(!isset($_SESSION['username'])){
-include('users_area/user_login.php' );
+include('user_login.php' );
             }else{
                 include('payment.php');
             }
@@ -97,7 +97,7 @@ include('users_area/user_login.php' );
 <!-- last child  -->
 <!-- include footer  -->
 <?php
-include("./includes/footer.php")
+include("../includes/footer.php")
 ?>
     </div>
 <!-- bootsrap jss link -->

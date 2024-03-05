@@ -37,13 +37,13 @@ include('functions/common_function.php');
         <a class="nav-link" href="display_all.php">Products<i class="fa fa-product-hunt" aria-hidden="true"></i></a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="#">Register<i class="fa fa-registered" aria-hidden="true"></i> </a>
+        <a class="nav-link" href="./users_area/user_registration.php">Register<i class="fa fa-registered" aria-hidden="true"></i> </a>
       </li>
        <li class="nav-item">
         <a class="nav-link" href="#">Contact <i class="fa fa-phone" aria-hidden="true"></i></a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="#">Cart<i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><?php cart_item(); ?></sup> </a>
+        <a class="nav-link" href="cart.php">Cart<i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><?php cart_item(); ?></sup> </a>
       </li>
        <li class="nav-item">
         <a class="nav-link" href="#">Total Price: <?php total_cart_price();?>/-</a>
@@ -64,7 +64,7 @@ include('functions/common_function.php');
         <a class="nav-link" href="#">Welcome Guest</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Login</a>
+        <a class="nav-link" href="./users_area/user_login.php">Login</a>
       </li>
     </ul>
 </nav>
