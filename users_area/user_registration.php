@@ -125,13 +125,22 @@ else {
     '$user_contact', '$user_image', '$user_ip')";
     $sql_execute = mysqli_query($con, $insert_query);
     if ($sql_execute) {
-        echo "<script>alert('Data inserted successfully.');</script>";
+        echo "<script>alert('Data inserted successfully.')</script>";
     } else {
         die(mysqli_error($con));
     }
 }
-
- 
+//selecting cart items
+$select_cart_items="select * from `cart_details` where ip_address= '$user_ip' ";
+$result_cart = mysqli_query($con, $select_cart_items);
+$rows_count = mysqli_num_rows($result_cart);
+  if($rows_count>0){
+    $_SESSION['username']=$user_username;
+     echo "<script>alert('You have items in your Cart.')</script>";
+     echo "<script>window.open('checkout.php','_self')</script>";
+  }else{
+    echo "<script>window.open('../index.php','_self')</script>";
+  }
 }
 
 

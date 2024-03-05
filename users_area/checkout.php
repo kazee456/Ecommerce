@@ -82,7 +82,7 @@ include('../includes/connect.php');
             if(!isset($_SESSION['username'])){
 include('user_login.php' );
             }else{
-                include('payment.php');
+                include('../payment.php');
             }
 
           ?>
