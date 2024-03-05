@@ -37,7 +37,7 @@ include('functions/common_function.php');
         <a class="nav-link" href="display_all.php">Products<i class="fa fa-product-hunt" aria-hidden="true"></i></a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="#">Register<i class="fa fa-registered" aria-hidden="true"></i> </a>
+        <a class="nav-link" href="./users_area/user_registration.php">Register<i class="fa fa-registered" aria-hidden="true"></i> </a>
       </li>
        <li class="nav-item">
         <a class="nav-link" href="#">Contact <i class="fa fa-phone" aria-hidden="true"></i></a>

@@ -95,17 +95,42 @@ if(isset($_POST['user_register'])){
  $user_ip= getIPAddress();
 
 
- //insert query
- move_uploaded_file($user_image_tmp,"./user_images/$user_image");
- $insert_query="insert into `user_table` (username,user_email,user_password,user_image,user_ip,
- user_address,user_mobile) values ('$user_username','$user_email','$user_password','$user_address','$user_contact',
- '$user_image','$user_ip')";
- $sql_execute=mysqli_query($con,$insert_query);
- if($sql_execute){
-    echo "<script> alert ('Data inserted successfully')</script>";
- }else{
-    die(mysqli_error($con));
- }
+// Check if the username exists
+$select_username_query = "SELECT * FROM `user_table` WHERE username='$user_username'";
+$result_username = mysqli_query($con, $select_username_query);
+$rows_count_username = mysqli_num_rows($result_username);
+
+// Check if the email exists
+$select_email_query = "SELECT * FROM `user_table` WHERE user_email='$user_email'";
+$result_email = mysqli_query($con, $select_email_query);
+$rows_count_email = mysqli_num_rows($result_email);
+
+if ($rows_count_username > 0) {
+    // Username already exists
+    echo "<script>alert('Username already exists.');</script>";
+} elseif ($rows_count_email > 0) {
+    // Email already exists
+    echo "<script>alert('Email already exists.');</script>";  
+}  
+elseif($user_password!=$conf_user_password){
+    //check if passwords match 
+ echo "<script>alert('Passwords do not match');</script>";
+    }
+else {
+    // Insert query
+    move_uploaded_file($user_image_tmp, "./user_images/$user_image");
+    $insert_query = "INSERT INTO `user_table` (username, user_email, user_password, user_image, user_ip,
+    user_address, user_mobile) VALUES ('$user_username', '$user_email', '$user_password', '$user_address',
+    '$user_contact', '$user_image', '$user_ip')";
+    $sql_execute = mysqli_query($con, $insert_query);
+    if ($sql_execute) {
+        echo "<script>alert('Data inserted successfully.');</script>";
+    } else {
+        die(mysqli_error($con));
+    }
+}
+
+ 
 }
 
 
