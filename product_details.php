@@ -52,8 +52,7 @@ session_start();
     </ul>
     <form action="search_product.php" method= "get" class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" 
-      aria-label="Search" name="search_data">
-      
+      aria-label="Search" name="search_data">  
       <input type="submit" value="search"class="btn btn-outline-light"name="search_data_product">
     </form>
   </div>
@@ -62,11 +61,16 @@ session_start();
 <!-- second child -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
     <ul class="navbar-nav me-auto">
-
-       <li class="nav-item">
-        <a class="nav-link" href="#">Welcome Guest</a>
-      </li>
       <?php
+      if(!isset($_SESSION['username'])){
+        echo"  <li class='nav-item'>
+        <a class='nav-link' href='#'>Welcome Guest</a>
+      </li>";
+      }else{
+        echo" <li class='nav-item'>
+        <a class='nav-link'href='#'>Welcome ". $_SESSION['username']."</a>
+      </li>";
+      }
       if(!isset($_SESSION['username'])){
         echo" <li class='nav-item'>
         <a class='nav-link'href='./user_login.php'>Login</a>
