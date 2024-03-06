@@ -1,6 +1,7 @@
 <?php
 include('includes/connect.php');
 include('functions/common_function.php');
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,9 +50,11 @@ include('functions/common_function.php');
         <a class="nav-link" href="#">Total Price: <?php total_cart_price();?>/-</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+    <form action="search_product.php" method= "get" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" 
+      aria-label="Search" name="search_data">
+      
+      <input type="submit" value="search"class="btn btn-outline-light"name="search_data_product">
     </form>
   </div>
 </nav>
@@ -63,9 +66,18 @@ include('functions/common_function.php');
        <li class="nav-item">
         <a class="nav-link" href="#">Welcome Guest</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./users_area/user_login.php">Login</a>
-      </li>
+      <?php
+      if(!isset($_SESSION['username'])){
+        echo" <li class='nav-item'>
+        <a class='nav-link'href='./user_login.php'>Login</a>
+      </li>";
+      }else{
+        echo" <li class='nav-item'>
+        <a class='nav-link'href='logout.php'>Logout</a>
+      </li>";
+      }
+
+      ?>
     </ul>
 </nav>
 
