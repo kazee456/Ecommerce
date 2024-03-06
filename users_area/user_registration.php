@@ -122,7 +122,7 @@ else {
     move_uploaded_file($user_image_tmp, "./user_images/$user_image");
     $insert_query = "INSERT INTO `user_table` (username, user_email, user_password, user_image, user_ip,
     user_address, user_mobile) VALUES ('$user_username', '$user_email', '$hash_password', '$user_address',
-    '$user_contact', '$user_image', '$user_ip')";
+    '$user_ip', '$user_image', '$user_contact')";
     $sql_execute = mysqli_query($con, $insert_query);
     if ($sql_execute) {
         echo "<script>alert('Data inserted successfully.')</script>";
