@@ -108,7 +108,7 @@ cart();
                 <?php
                 global $con;
     $ip = getIPAddress();
-    $total_price=0;
+  
     $cart_query="select * from `cart_details` where ip_address='$ip'";
     $result=mysqli_query($con,$cart_query);
     $result_count=mysqli_num_rows($result);
@@ -124,6 +124,7 @@ cart();
                 </tr>
             </thead>
             <tbody>";
+              $total_price=0;
     while($row=mysqli_fetch_array($result)){
       $products_id=$row['products_id']; 
       $select_products="select * from `products` where products_id='$products_id'";
