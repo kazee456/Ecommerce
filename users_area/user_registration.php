@@ -92,7 +92,7 @@ if(isset($_POST['user_register'])){
  $user_address=$_POST['user_address']; 
  $user_contact=$_POST['user_contact'];
  $user_image=$_FILES['user_image']['name'];
- $user_image_tmp=$_FILES['user_image']['temp_name'];
+ $user_image_tmp=$_FILES['user_image']['tmp_name'];
  $user_ip= getIPAddress();
 
 
