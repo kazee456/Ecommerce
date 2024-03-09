@@ -154,8 +154,6 @@ if(isset($_POST['edit_product'])){
         if($result_update){
             echo"<script>alert('products updated successfully')</script>";
             echo"<script>window.open('./insert_product.php','_self')</script>";
-        }else{
-            echo"<script>alert('products Are not updates successfully')</script>";
         }
      }
     }
