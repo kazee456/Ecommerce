@@ -29,6 +29,10 @@ include('../functions/common_function.php');
      body{
         overflow-x: hidden;
      }
+     .product_img{
+        width: 100px;
+        object-fit: contain;
+     }
 
     </style>
 </head>
@@ -99,9 +103,12 @@ include('../functions/common_function.php');
          ?>
     </div>
     <!-- last child  -->
-    <div class="bg-info text-center footer">
+    <!-- <div class="bg-info text-center footer">
     <p>All rights reserved ©- Designed by Kazee</p>
-</div>
+    </div> -->
+    <?php
+include("../includes/footer.php")
+?>
     </div>
  <!-- bootsrap jss link  -->   
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
