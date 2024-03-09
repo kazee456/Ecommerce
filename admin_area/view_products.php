@@ -24,7 +24,7 @@
             $status=$row['status'];
             $number++;
             ?>
-            echo " <tr class='text-center'>
+             <tr class='text-center'>
             <td><?php echo $number; ?></td>
             <td><?php echo $product_title; ?></td>
             <td><img src='./product_images/<?php echo $product_image1;?>'class='product_img'/></td>
@@ -38,7 +38,7 @@
             <td><?php echo $status ?></td>
             <td><a href=''class='text-light'><i class='fa-solid fa-pen-to-square'></i></a></td>
             <td><a href=''class='text-light'><i class='fa-solid fa-trash'></i></a></td>
-        </tr>";
+        </tr>
         <?php
         }
         ?>
