@@ -66,8 +66,8 @@ if(isset($_GET['edit_products'])){
             </select>
         </div>
         <div class="form-outline w-50 m-auto mb-4">
-            <label for="product_brands" class="form-label">Product Brands</label>
-            <select name="product_brands" class="form-select w-100 mb-4 py-2">
+            <label for="product_brand" class="form-label">Product Brands</label>
+            <select name="product_brand" class="form-select w-100 mb-4 py-2">
                 <option value="<?php echo $bran_title ?>"><?php echo $bran_title ?></option>
                 <?php
                  $select_brand_all= "Select * from `brands`";
@@ -115,3 +115,48 @@ if(isset($_GET['edit_products'])){
         </div>
     </form>
 </div>
+
+<!-- editting products -->
+<?php
+if(isset($_POST['edit_product'])){
+    $product_title=$_POST['product_title'];
+    $product_desc=$_POST['product_desc'];
+    $product_keywords=$_POST['product_keywords'];
+    $product_category=$_POST['product_category'];
+    $product_brand=$_POST['product_brand'];
+    $product_price=$_POST['product_price']; 
+
+    $product_image1=$_FILES['product_image1']['name'];
+    $product_image2=$_FILES['product_image2']['name'];
+    $product_image3=$_FILES['product_image3']['name'];
+
+    $temp_image1=$_FILES['product_image1']['tmp_name'];
+    $temp_image2=$_FILES['product_image2']['tmp_name'];
+    $temp_image3=$_FILES['product_image3']['tmp_name'];
+
+    // checking for empty field or not
+    if($product_title==''or $product_desc==''or $product_keywords=='' or $product_category=='' or 
+    $product_brand=='' or $product_image1==''  or $product_image2==''  or $product_image3==''
+     or $product_price==''){
+        echo"<script>alert('please fill all the fields')</script>";
+     }else{
+        move_uploaded_file($temp_image1,"./product_images/$product_image1");
+        move_uploaded_file($temp_image2,"./product_images/$product_image2");
+        move_uploaded_file($temp_image3,"./product_images/$product_image3");
+
+        //query to update products
+        $update_product="update `products` set product_title='$product_title',
+        product_description='$product_desc',product_keywords='$product_keywords',
+        category_title= '$product_category',brand_title='$product_brand',product_image1='$product_image1',
+        product_image2='$product_image2', product_image3='$product_image3',product_price='$product_price',
+        date=NOW() where products_id=$edit_id";
+        $result_update=mysqli_query($con,$update_product);
+        if($result_update){
+            echo"<script>alert('products updated successfully')</script>";
+            echo"<script>window.open('./insert_product.php','_self')</script>";
+        }else{
+            echo"<script>alert('products Are not updates successfully')</script>";
+        }
+     }
+    }
+?>
