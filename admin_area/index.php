@@ -69,11 +69,11 @@ include('../functions/common_function.php');
                   class="nav-link text-light bg-info my-1">View Products</a>
                  </button><button><a href="index.php?insert_category" 
                  class="nav-link text-light bg-info my-1">Insert Categories</a>
-                 </button><button><a href="" 
+                 </button><button><a href="index.php?view_categories" 
                  class="nav-link text-light bg-info my-1">View Categories </a>
                   </button><button><a href="index.php?insert_brand" 
                  class="nav-link text-light bg-info my-1">Insert Brands</a>
-                 </button><button><a href="" 
+                 </button><button><a href="index.php?view_brands" 
                  class="nav-link text-light bg-info my-1 ">View Brands</a>
                  </button><button><a href="" 
                  class="nav-link text-light bg-info my-1">All Orders</a>
@@ -104,10 +104,12 @@ include('../functions/common_function.php');
           if(isset($_GET['delete_products'])){
             include('delete_products.php'); 
          }
-
-
-
-
+         if(isset($_GET['view_categories'])){
+            include('view_categories.php'); 
+         }
+         if(isset($_GET['view_brands'])){
+            include('view_brands.php'); 
+         }
          ?>
     </div>
     <!-- last child  -->
