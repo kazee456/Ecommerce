@@ -77,7 +77,7 @@ include('../functions/common_function.php');
                  class="nav-link text-light bg-info my-1 ">View Brands</a>
                  </button><button><a href="index.php?list_orders" 
                  class="nav-link text-light bg-info my-1">All Orders</a>
-                 </button><button><a href="" 
+                 </button><button><a href="index.php?list_payments" 
                  class="nav-link text-light bg-info my-1">All payments</a>
                   </button><button><a href="" 
                  class="nav-link text-light bg-info my-1">List Users</a>
@@ -129,6 +129,13 @@ include('../functions/common_function.php');
          }
          if(isset($_GET['delete_orders'])){
             include('delete_orders.php'); 
+         }
+
+         if(isset($_GET['list_payments'])){
+            include('list_payments.php'); 
+         }
+         if(isset($_GET['delete_payments'])){
+            include('delete_payments.php'); 
          }
          
          ?>
