@@ -75,7 +75,7 @@ include('../functions/common_function.php');
                  class="nav-link text-light bg-info my-1">Insert Brands</a>
                  </button><button><a href="index.php?view_brands" 
                  class="nav-link text-light bg-info my-1 ">View Brands</a>
-                 </button><button><a href="" 
+                 </button><button><a href="index.php?list_orders" 
                  class="nav-link text-light bg-info my-1">All Orders</a>
                  </button><button><a href="" 
                  class="nav-link text-light bg-info my-1">All payments</a>
@@ -121,7 +121,16 @@ include('../functions/common_function.php');
          }
          if(isset($_GET['delete_brands'])){
             include('delete_brands.php'); 
+         } if(isset($_GET['delete_brands'])){
+            include('delete_brands.php'); 
+         } 
+         if(isset($_GET['list_orders'])){
+            include('list_orders.php'); 
          }
+         if(isset($_GET['delete_orders'])){
+            include('delete_orders.php'); 
+         }
+         
          ?>
     </div>
     <!-- last child  -->
