@@ -22,13 +22,13 @@
     <tr>
         <td><?php echo $number; ?></td>
         <td><?php echo $brand_title; ?></td>
-        <td><a href=''class='text-light'>
+        <td><a href='index.php?edit_brands=<?php echo $brand_id; ?>'class='text-light'>
             <i class='fa-solid fa-pen-to-square'></i></a></td>
-        <td><a href=''class='text-light'>
+        <td><a href='index.php?delete_brands=<?php echo $brand_id; ?>'class='text-light'>
             <i class='fa-solid fa-trash'></i></a></td>
     </tr>
     <?php
 
-    }?>
+    }?> 
 </tbody>
 </table>

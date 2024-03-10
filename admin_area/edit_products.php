@@ -153,7 +153,7 @@ if(isset($_POST['edit_product'])){
         $result_update=mysqli_query($con,$update_product);
         if($result_update){
             echo"<script>alert('products updated successfully')</script>";
-            echo"<script>window.open('./insert_product.php','_self')</script>";
+            echo"<script>window.open('./index.php?view_products','_self')</script>";
         }
      }
     }
