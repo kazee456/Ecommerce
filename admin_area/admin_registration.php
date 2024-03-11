@@ -83,7 +83,7 @@ $result_email = mysqli_query($con, $select_email_query);
 $rows_count_email = mysqli_num_rows($result_email);
 
 if ($rows_count_username > 0) {
-    // Username already exists
+    // Username already exist
     echo "<script>alert('Username already exists.');</script>";
 } elseif ($rows_count_email > 0) {
     // Email already exists
