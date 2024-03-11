@@ -1,3 +1,7 @@
+<?php
+include('../includes/connect.php');
+include('../functions/common_function.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,29 +31,30 @@
             <div class="col-lg-6 col-xl-4">
                <form action="" method="post">
                 <div class="form-outline mb-4">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Enter your Username"
+                    <label for="admin_name" class="form-label">Username</label>
+                    <input type="text" id="admin_name" name="admin_name" placeholder="Enter your Username"
                     required="required" class="form-control">
                 </div>
                 <div class="form-outline mb-4">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email"
+                    <label for="admin_email" class="form-label">Email</label>
+                    <input type="email" id="admin_email" name="admin_email" placeholder="Enter your email"
                     required="required" class="form-control">
                 </div>
                 <div class="form-outline mb-4">
-                    <label for="password" class="form-label">Enter your password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password"
+                    <label for="admin_password" class="form-label">Enter your password</label>
+                    <input type="password" id="admin_password" name="admin_password" placeholder="Enter your password"
                     required="required" class="form-control">
                 </div>
                 <div class="form-outline mb-4">
-                    <label for="confirm_password" class="form-label">Confirm your password</label>
-                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password"
-                    required="required" class="form-control">
+                    <label for="conf_admin_password" class="form-label">Confirm your password</label>
+                    <input type="password" id="conf_admin_password" name="conf_admin_password"
+                     placeholder="Confirm your password"required="required" class="form-control">
                 </div>
                 <div>
                       <input type="submit" class="bg-info py-2 px-3 border-0" value="Register" 
-                      name="admin_registration"><p class="small mt-2 pt-1"><strong>Don't you have an account?
-                      </strong> <a href="admin_login.php" class="text-danger">Login</a></p>
+                      name="admin_registration"><p class="small mt-2 pt-1"><strong>
+                      Do you already have an account?</strong> <a href="admin_login.php" 
+                      class="text-danger">Login</a></p>
                 </div>
                </form>
             </div>
@@ -57,3 +62,48 @@
     </div>
 </body>
 </html>
+
+<!-- php code  -->
+<?php
+if(isset($_POST['admin_registration'])){
+ $admin_name=$_POST['admin_name'];  
+ $admin_email=$_POST['admin_email'];  
+ $admin_password=trim($_POST['admin_password']);
+ $hash_password=password_hash($admin_password,PASSWORD_DEFAULT);
+ $conf_admin_password=$_POST['conf_admin_password'];
+
+// Check if the username exists
+$select_username_query = "SELECT * FROM `admin_table` WHERE admin_name='$admin_name'";
+$result_username = mysqli_query($con, $select_username_query);
+$rows_count_username = mysqli_num_rows($result_username);
+
+// Check if the email exists
+$select_email_query = "SELECT * FROM `admin_table` WHERE admin_email='$admin_email'";
+$result_email = mysqli_query($con, $select_email_query);
+$rows_count_email = mysqli_num_rows($result_email);
+
+if ($rows_count_username > 0) {
+    // Username already exists
+    echo "<script>alert('Username already exists.');</script>";
+} elseif ($rows_count_email > 0) {
+    // Email already exists
+    echo "<script>alert('Email already exists.');</script>";  
+}  
+elseif($admin_password!=$conf_admin_password){
+    //check if passwords match 
+ echo "<script>alert('Passwords do not match');</script>";
+    }
+else {
+    // Insert query
+    $insert_query = "INSERT INTO `admin_table` (admin_name,admin_email,admin_password) 
+    VALUES ('$admin_name','$admin_email','$hash_password')";
+    $sql_execute = mysqli_query($con,$insert_query);
+    if ($sql_execute) {
+        echo "<script>alert('Data inserted successfully.')</script>";
+        echo "<script>window.open('admin_login.php','_self')</script>";
+    } else {
+        die(mysqli_error($con));
+    }
+}
+}
+?>
