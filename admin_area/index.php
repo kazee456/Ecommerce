@@ -79,7 +79,7 @@ include('../functions/common_function.php');
                  class="nav-link text-light bg-info my-1">All Orders</a>
                  </button><button><a href="index.php?list_payments" 
                  class="nav-link text-light bg-info my-1">All payments</a>
-                  </button><button><a href="" 
+                  </button><button><a href="index.php?list_users" 
                  class="nav-link text-light bg-info my-1">List Users</a>
                  </button><button><a href="" 
                  class="nav-link text-light bg-info my-1">Logout</a></button> 
@@ -137,7 +137,12 @@ include('../functions/common_function.php');
          if(isset($_GET['delete_payments'])){
             include('delete_payments.php'); 
          }
-         
+          if(isset($_GET['list_users'])){
+            include('list_users.php'); 
+         }
+         if(isset($_GET['delete_users'])){
+            include('delete_users.php'); 
+         }
          ?>
     </div>
     <!-- last child  -->
