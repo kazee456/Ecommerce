@@ -10,9 +10,7 @@ $con = mysqli_connect('localhost', 'root', '@pes1234', 'mystore');
 if (!$con) {
     // If connection fails, print error message and exit script
     die("Connection failed: " . mysqli_connect_error());
-}  
+}
 // if($con){
 //     echo "connected";
 // }
-?>
-
