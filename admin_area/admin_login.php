@@ -1,6 +1,7 @@
 <?php
 include('../includes/connect.php');
 include('../functions/common_function.php');
+@session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,12 +67,12 @@ if (isset($_POST['admin_login'])) {
     $user_ip = getIPAddress();
 
     if ($row_count > 0) {
-        $_SESSION['username'] = $user_username;
+        $_SESSION['admin_name'] = $user_username;
         // Verify password using password_verify()
         if (password_verify($user_password, $row_data['admin_password'])) {
             // echo "<script>alert('Login Successful')</script>";
             // if ($row_count==1){
-            $_SESSION['username'] = $user_username;
+            $_SESSION['admin_name'] = $user_username;
             echo "<script>alert('Login Successful')</script>";
             echo "<script>window.open('index.php','_self')</script>";
             // }
