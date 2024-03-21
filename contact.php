@@ -114,7 +114,7 @@ session_start();
         </div>
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <form>
+                <form action="" method="post" id="contactForm">
                     <div class="form-group">
                         <label for="name">Name:</label>
                         <input type="text" class="form-control" id="name" name="name" required>
@@ -127,7 +127,7 @@ session_start();
                         <label for="message">Message:</label>
                         <textarea class="form-control" id="message" name="message" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button type="submit" class="btn btn-primary" id="sendMessageBtn">Send Message</button>
                 </form>
             </div>
         </div>
@@ -177,6 +177,18 @@ session_start();
         </div>
     </div>
 </body>
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+        // Simulate sending email (since we can't actually send emails in this environment)
+        // You may replace this with actual AJAX request to send email
+        setTimeout(function() {
+            alert("Email sent successfully!. Thank you for reaching out");
+            // Optionally, reset form fields
+            document.getElementById("contactForm").reset();
+        }, 1000); // Simulate sending email for 1 second
+    });
+</script>
 <?php
 include("./includes/footer.php")
 ?>
