@@ -1,4 +1,5 @@
 {
-    "vim.startInInsertMode": true
+    "vim.startInInsertMode": true,
+    "prettier.printWidth": 100
     
 }
