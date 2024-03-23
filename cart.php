@@ -209,16 +209,7 @@ session_start();
           if (isset($_POST['remove_cart'])) {
             $ip = getIPAddress();
             $removeitem = $_POST['removeitem'];
-
-            // // Debugging statement
-            // echo "IP Address: $ip<br>";
-            // echo "Items to remove: ";
-            // var_dump($removeitem); // Display the removeitem array
-
             foreach ($removeitem as $remove_id) {
-              // // Debugging statement
-              // echo "Item ID to remove: $remove_id<br>";
-
               $delete_query = "DELETE FROM cart_details WHERE products_id=$remove_id AND ip_address='$ip'";
               $run_delete = mysqli_query($con, $delete_query);
               if (!$run_delete) {
