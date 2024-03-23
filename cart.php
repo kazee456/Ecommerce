@@ -85,11 +85,11 @@ session_start();
       }
       if (!isset($_SESSION['username'])) {
         echo " <li class='nav-item'>
-        <a class='nav-link'href='./user_login.php'>Login</a>
+        <a class='nav-link'href='./users_area/user_login.php'>Login</a>
       </li>";
       } else {
         echo " <li class='nav-item'>
-        <a class='nav-link'href='logout.php'>Logout</a>
+        <a class='nav-link'href='./users_area/logout.php'>Logout</a>
       </li>";
       }
 
@@ -119,16 +119,16 @@ session_start();
           $result_count = mysqli_num_rows($result);
           if ($result_count > 0) {
             echo "       <thead>
-                <tr>
-                    <th>Product Title</th>
-                    <th>Product Image</th>
-                    <th>Quantity</th>
-                    <th>Total Price</th>
-                    <th>Remove</th>
-                    <th colspan='2'>Operations</th>
-                </tr>
-            </thead>
-            <tbody>";
+          <tr>
+              <th>Product Title</th>
+              <th>Product Image</th>
+              <th>Quantity</th>
+              <th>Total Price</th>
+              <th>Remove</th>
+              <th colspan='2'>Operations</th>
+          </tr>
+      </thead>
+      <tbody>";
             $total_price = 0;
             while ($row = mysqli_fetch_array($result)) {
               $products_id = $row['products_id'];
@@ -147,103 +147,97 @@ session_start();
                 // Calculate the subtotal for this product and add it to the total price
                 $subtotal = $quantity * $product_values;
                 $total_price += $subtotal;
-              }
-            }
+
           ?>
-            <tr>
-              <td><?php echo $product_title ?></td>
-              <td><img src="./admin_area/product_images/<?php echo $product_image1 ?>" alt="" class="cart_img"></td>
-              <td><input type="text" name="qty[<?php echo $products_id; ?>]" class="form-input w-50"></td>
-              <td><?php echo $price_table ?>/-</td>
-              <td><input type="checkbox" name="removeitem[]" value="<?php echo $products_id ?>"></td>
-              <td class="d-flex">
-                <!-- <button  class="bg-info px-3 py-2 boarder-0 mx-3">Update</button> -->
-                <input type="submit" value="Update Cart" class="bg-info px-3 py-2 boarder-0 mx-3" name="update_cart">
-                <!-- <button  class="bg-info px-3 py-2 boarder-0 mx-3">Remove</button> -->
-                <input type="submit" value="Remove Item(s)" class="bg-info px-3 py-2 boarder-0 mx-3" name="remove_cart">
-              </td>
-            </tr>
-            <!-- update the quantity field -->
-            <?php
-            function update_cart_items()
-            {
-              global $con;
-
-              if (isset($_POST['update_cart'])) {
-                $ip = getIPAddress();
-                $quantities = $_POST['qty'];
-
-                // // Debugging statement
-                // echo "IP Address: $ip<br>";
-                // echo "Quantities: ";
-                // var_dump($quantities); // Display the quantities array
-
-                foreach ($quantities as $products_id => $quantity) {
-                  // Validate quantity
-                  if ($quantity < 1 || $quantity > 50) {
-                    $message = "We can only provide quantities of goods between 1 and 50.";
-                    echo "<script>alert('$message');</script>";
-                    return;
-                  }
-
-                  // // Debugging statement
-                  // echo "Product ID: $products_id<br>";
-                  // echo "Quantity: $quantity<br>";
-
-                  // Update cart
-                  $update_cart_query = "UPDATE cart_details SET quantity=$quantity WHERE ip_address='$ip' AND products_id=$products_id";
-                  $result = mysqli_query($con, $update_cart_query);
-                  if (!$result) {
-                    echo "Error updating quantity: " . mysqli_error($con);
-                    return;
-                  }
-                }
-
-                echo "<script>alert('Cart updated successfully.');</script>";
-              }
-            }
-
-            // Function to remove cart items
-            function remove_cart_items()
-            {
-              global $con;
-
-              if (isset($_POST['remove_cart'])) {
-                $ip = getIPAddress();
-                $removeitem = $_POST['removeitem'];
-
-                // // Debugging statement
-                // echo "IP Address: $ip<br>";
-                // echo "Items to remove: ";
-                // var_dump($removeitem); // Display the removeitem array
-
-                foreach ($removeitem as $remove_id) {
-                  // // Debugging statement
-                  // echo "Item ID to remove: $remove_id<br>";
-
-                  $delete_query = "DELETE FROM cart_details WHERE products_id=$remove_id AND ip_address='$ip'";
-                  $run_delete = mysqli_query($con, $delete_query);
-                  if (!$run_delete) {
-                    echo "Error removing item: " . mysqli_error($con);
-                    return;
-                  }
-                }
-
-                echo "<script>window.open('cart.php','_self')</script>";
-              }
-            }
-
-            // Call update and remove cart item functions
-            update_cart_items();
-            remove_cart_items(); ?>
-
+                <tr>
+                  <td><?php echo $product_title ?></td>
+                  <td><img src="./admin_area/product_images/<?php echo $product_image1 ?>" alt="" class="cart_img"></td>
+                  <td><input type="text" name="qty[<?php echo $products_id; ?>]" class="form-input w-50"></td>
+                  <td><?php echo $price_table ?>/-</td>
+                  <td><input type="checkbox" name="removeitem[]" value="<?php echo $products_id ?>"></td>
+                  <td class="d-flex">
+                    <input type="submit" value="Update Cart" class="bg-info px-3 py-2 border-0 mx-3" name="update_cart">
+                    <input type="submit" value="Remove Item(s)" class="bg-info px-3 py-2 border-0 mx-3" name="remove_cart">
+                  </td>
+                </tr>
           <?php
+              }
+            }
           } else {
             echo "<h2 class='text-center text-danger'>Cart is empty</h2>";
           }
+
           ?>
           </tbody>
         </table>
+        <!-- update the quantity field -->
+        <?php
+        function update_cart_items()
+        {
+          global $con;
+
+          if (isset($_POST['update_cart'])) {
+            $ip = getIPAddress();
+            $quantities = $_POST['qty'];
+
+            foreach ($quantities as $products_id => $quantity) {
+              // Validate quantity
+              if ($quantity < 1 || $quantity > 50) {
+                $message = "We can only provide quantities of goods between 1 and 50.";
+                echo "<script>alert('$message');</script>";
+                return;
+              }
+
+              // Update cart
+              $update_cart_query = "UPDATE cart_details SET quantity=$quantity WHERE ip_address='$ip' AND products_id=$products_id";
+              $result = mysqli_query($con, $update_cart_query);
+              if (!$result) {
+                echo "Error updating quantity: " . mysqli_error($con);
+                return;
+              }
+            }
+
+            echo "<script>alert('Cart updated successfully.');</script>";
+          }
+        }
+
+        // Function to remove cart items
+        function remove_cart_items()
+        {
+          global $con;
+
+          if (isset($_POST['remove_cart'])) {
+            $ip = getIPAddress();
+            $removeitem = $_POST['removeitem'];
+
+            // // Debugging statement
+            // echo "IP Address: $ip<br>";
+            // echo "Items to remove: ";
+            // var_dump($removeitem); // Display the removeitem array
+
+            foreach ($removeitem as $remove_id) {
+              // // Debugging statement
+              // echo "Item ID to remove: $remove_id<br>";
+
+              $delete_query = "DELETE FROM cart_details WHERE products_id=$remove_id AND ip_address='$ip'";
+              $run_delete = mysqli_query($con, $delete_query);
+              if (!$run_delete) {
+                echo "Error removing item: " . mysqli_error($con);
+                return;
+              }
+            }
+
+            echo "<script>window.open('cart.php','_self')</script>";
+          }
+        }
+
+        // Call update and remove cart item functions
+        update_cart_items();
+        remove_cart_items(); ?>
+
+
+        <!-- </tbody>
+        </table> -->
         <!-- subtotal -->
         <div class="d-flex mb-5">
           <?php
@@ -268,19 +262,24 @@ session_start();
         </div>
     </div>
   </div>
-  <!-- <script>
-    document.querySelector('form').addEventListener('submit', function(event) {
-      const qtyInput = document.querySelector('input[name="qty"]');
-      const qty = parseInt(qtyInput.value);
-
-      if (qty < 1 || qty > 50) {
-        event.preventDefault();
-        alert('We can only provide quantities of goods between 1 and 50.');
-        qtyInput.focus();
-      }
-    });
-  </script> -->
   </form>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('form');
+      form.addEventListener('submit', function(event) {
+        const qtyInputs = form.querySelectorAll('input[name^="qty"]');
+        qtyInputs.forEach(function(qtyInput) {
+          const qty = parseInt(qtyInput.value);
+          if (qty < 1 || qty > 50) {
+            event.preventDefault();
+            alert('We can only provide quantities of goods between 1 and 50.');
+            qtyInput.focus();
+          }
+        });
+      });
+    });
+  </script>
+
   <!-- last child  -->
   <!-- include footer  -->
   <?php
