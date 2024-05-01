@@ -60,7 +60,7 @@ session_start();
             <a class="nav-link" href="profile.php">My account<aria-hidden="true"></i> </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact <i class="fa fa-phone" aria-hidden="true"></i></a>
+            <a class="nav-link" href="../contact.php">Contact <i class="fa fa-phone" aria-hidden="true"></i></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../cart.php">Cart<i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><?php cart_item(); ?></sup> </a>
