@@ -129,7 +129,7 @@ session_start();
           </tr>
       </thead>
       <tbody>";
-            $total_price = 0;
+            // $total_price = 0;
             while ($row = mysqli_fetch_array($result)) {
               $products_id = $row['products_id'];
               $select_products = "select * from `products` where products_id='$products_id'";
@@ -145,8 +145,9 @@ session_start();
                 $quantity = isset($_POST['qty'][$products_id]) ? intval($_POST['qty'][$products_id]) : 1;
 
                 // Calculate the subtotal for this product and add it to the total price
-                $subtotal = $quantity * $product_values;
-                $total_price += $subtotal;
+                // $subtotal = $quantity * $product_values;
+                // $total_price += $subtotal;
+                $total_price = calculateSubtotal($con, $ip);
 
           ?>
                 <tr>
@@ -181,6 +182,9 @@ session_start();
             $quantities = $_POST['qty'];
 
             foreach ($quantities as $products_id => $quantity) {
+              if (empty($quantity)) {
+                continue;
+              }
               // Validate quantity
               if ($quantity < 1 || $quantity > 50) {
                 $message = "We can only provide quantities of goods between 1 and 50.";

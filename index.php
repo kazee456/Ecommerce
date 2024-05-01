@@ -53,6 +53,7 @@ session_start();
          class='fa fa-registered' aria-hidden='true'></i> </a>
       </li>";
           }
+          $total_price = calculateSubtotal($con, $ip);
           ?>
           <li class="nav-item">
             <a class="nav-link" href="contact.php">Contact <i class="fa fa-phone" aria-hidden="true"></i></a>
@@ -61,7 +62,7 @@ session_start();
             <a class="nav-link" href="cart.php">Cart<i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><?php cart_item(); ?></sup> </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Total Price: <?php total_cart_price(); ?>/-</a>
+            <a class="nav-link" href="#">Total Price: <?php $total_price ?>/-</a>
           </li>
         </ul>
         <form action="search_product.php" method="get" class="form-inline my-2 my-lg-0">

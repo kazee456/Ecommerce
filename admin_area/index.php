@@ -154,7 +154,7 @@ session_start();
     </div> -->
       <footer>
          <?php
-         include("../includes/footer.php")
+         // include("../includes/footer.php")
          ?>
       </footer>
    </div>

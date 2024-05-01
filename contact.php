@@ -66,11 +66,11 @@ session_start();
                         <a class="nav-link" href="#">Total Price: <?php total_cart_price(); ?>/-</a>
                     </li>
                 </ul>
-                <form action="search_product.php" method="get" class="form-inline my-2 my-lg-0">
+                <!-- <form action="search_product.php" method="get" class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
 
                     <input type="submit" value="search" class="btn btn-outline-light" name="search_data_product">
-                </form>
+                </form> -->
             </div>
     </div>
     </nav>
@@ -171,8 +171,8 @@ session_start();
         <hr>
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <h2 class="text-center">Navigation</h2>
-                <p class="text-center">Use the navigation menu at the top of the page to explore our website.</p>
+                <!-- <h2 class="text-center">Navigation</h2>
+                <p class="text-center">Use the navigation menu at the top of the page to explore our website.</p> -->
             </div>
         </div>
     </div>
