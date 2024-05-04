@@ -6,12 +6,12 @@
         $result = mysqli_query($con, $get_payments);
         $row_count = mysqli_num_rows($result);
 
-     
+
 
         if ($row_count == 0) {
             echo "<h2 class='text-danger text-center mt-5'>No Users Yet</h2>";
         } else {
-               echo "<tr>
+            echo "<tr>
             <th>Sl.no</th>
             <th>Username</th>
             <th>User Email</th>
@@ -39,7 +39,7 @@
             <td>$user_address</td>
             <td>$user_mobile</td>";
 
-            echo "<td>
+                echo "<td>
                 <a href='index.php?delete_users=$user_id' type='button' class='text-light'
                 data-bs-toggle='modal' data-bs-target='#exampleModal-$user_id'>
                     <i class='fa-solid fa-trash'></i>
@@ -47,8 +47,8 @@
             </td>
         </tr>";
 
-        // Modal
-        echo "<div class='modal fade' id='exampleModal-$user_id' tabindex='-1' 
+                // Modal
+                echo "<div class='modal fade' id='exampleModal-$user_id' tabindex='-1' 
         aria-labelledby='exampleModalLabel' aria-hidden='true'>
             <div class='modal-dialog'>
                 <div class='modal-content'>
@@ -56,7 +56,7 @@
                         <h5 class='modal-title' id='exampleModalLabel'>Modal title</h5>
                     </div>
                     <div class='modal-body'>
-                        <h5>Are you sure you want to delete this payment?</h5>
+                        <h5>Are you sure you want to delete this account?</h5>
                     </div>
                     <div class='modal-footer'>
                         <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>
@@ -76,4 +76,4 @@
 
         echo "</tbody>
 </table>";
-?>
+        ?>
