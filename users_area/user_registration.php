@@ -33,7 +33,7 @@ include('../functions/common_function.php');
                     </div>
                     <!-- Image field -->
                     <div class="form-outline mb-4">
-                        <label for="user_image" class="form-label">Email</label>
+                        <label for="user_image" class="form-label">Image</label>
                         <input type="file" id="user_image" class="form-control" required="required" name="user_image">
                     </div>
                     <!-- password field -->
