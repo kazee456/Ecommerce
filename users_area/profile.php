@@ -65,9 +65,9 @@ session_start();
           <li class="nav-item">
             <a class="nav-link" href="../cart.php">Cart<i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><?php cart_item(); ?></sup> </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#">Total Price: <?php total_cart_price(); ?>/-</a>
-          </li>
+          </li> -->
         </ul>
         <form action="../search_product.php" method="get" class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
@@ -128,6 +128,9 @@ session_start();
         </li>
         <?php
         $username = $_SESSION['username'];
+        $userid = $_SESSION['userid'];
+        echo $_SESSION['username'];
+        echo $_SESSION['userid'];
         $user_image = "select * from `user_table` where username='$username'";
         $result_image = mysqli_query($con, $user_image);
         $row_image = mysqli_fetch_array($result_image);
@@ -145,6 +148,9 @@ session_start();
         </li>
         <li class="nav-item">
           <a class="nav-link text-light" href="profile.php?my_orders">My Orders</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="profile.php?receipt">Receipt(s)</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-light" href="profile.php?delete_account">Delete Account</a>
@@ -166,7 +172,9 @@ session_start();
       if (isset($_GET['delete_account'])) {
         include('delete_account.php');
       }
-
+      if (isset($_GET['receipt'])) {
+        include('receipt.php');
+      }
       ?>
     </div>
   </div>

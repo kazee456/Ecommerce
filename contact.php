@@ -62,9 +62,9 @@ session_start();
                     <li class="nav-item">
                         <a class="nav-link" href="cart.php">Cart<i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><?php cart_item(); ?></sup> </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#">Total Price: <?php total_cart_price(); ?>/-</a>
-                    </li>
+                    </li> -->
                 </ul>
                 <!-- <form action="search_product.php" method="get" class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
