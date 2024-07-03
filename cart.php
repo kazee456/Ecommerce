@@ -168,8 +168,8 @@ session_start();
                   <td><?php echo $product_title ?></td>
                   <td><img src="./admin_area/product_images/<?php echo $product_image1 ?>" alt="" class="cart_img"></td>
                   <td><input type="text" name="qty[<?php echo $products_id; ?>]" class="form-control w-50" value="<?php echo $quantity; ?>" min="1" max="5"></td>
-                  <td><?php echo $price_table ?>/-</td>
-                  <td><?php echo $subtotal ?>/-</td>
+                  <td>$<?php echo $price_table ?>/-</td>
+                  <td>$<?php echo $subtotal ?>/-</td>
                   <td><input type="checkbox" name="removeitem[]" value="<?php echo $products_id ?>"></td>
                 </tr>
           <?php

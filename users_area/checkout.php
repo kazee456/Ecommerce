@@ -119,7 +119,7 @@ session_start();
   <!-- last child  -->
   <!-- include footer  -->
   <?php
-  include("../includes/footer.php")
+  //include("../includes/footer.php")
   ?>
   </div>
   <!-- bootsrap jss link -->

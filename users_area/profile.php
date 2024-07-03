@@ -149,9 +149,7 @@ session_start();
         <li class="nav-item">
           <a class="nav-link text-light" href="profile.php?my_orders">My Orders</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="profile.php?receipt">Receipt(s)</a>
-        </li>
+
         <li class="nav-item">
           <a class="nav-link text-light" href="profile.php?delete_account">Delete Account</a>
         </li>
